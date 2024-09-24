@@ -29,8 +29,9 @@ with col1:
     st.markdown(f"<p style='color:red;font-size:32px;'>Valor aproximado da derivada: {approximate:.2f}</p>", unsafe_allow_html=True)
 
     # Display the cubic function equation
-    st.subheader("Equação da função cúbica")
+    st.subheader("Equação da função cúbica e sua 1a derivada")
     st.markdown(r"<span style='font-size:24px;'>$x(t) = t^3$</span>", unsafe_allow_html=True)
+    st.markdown(r"<span style='font-size:24px;'>$v(t) = \frac{dx}{dt} = 3t^2$</span>", unsafe_allow_html=True)
 
 with col2:
     t_values = np.linspace(-5, 5, 100)
