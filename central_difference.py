@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+from io import BytesIO
+from PIL import Image
 
 def cubic_function(t):
     return t**3
@@ -39,3 +41,8 @@ with col2:
     ax.set_title("Cubic Function Derivative Approximation")
     ax.legend()
     st.pyplot(fig)
+
+    # Add the image field
+    st.subheader("Illustration")
+    image = Image.open("cubic_function.png")
+    st.image(image, caption="Cubic Function Illustration", use_column_width=True)
