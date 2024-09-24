@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-from sympy import symbols, latex, sympify
 
 def cubic_function(t):
     return t**3
@@ -29,6 +28,10 @@ with col1:
     st.markdown(f"<p style='color:green;font-size:32px;'>Exact derivative: {exact:.2f}</p>", unsafe_allow_html=True)
     st.markdown(f"<p style='color:red;font-size:32px;'>Approximate derivative: {approximate:.2f}</p>", unsafe_allow_html=True)
 
+    # Display the cubic function equation
+    st.subheader("Cubic Function Equation")
+    st.write(r"$x(t) = t^3$")
+
 with col2:
     t_values = np.linspace(-5, 5, 100)
 
@@ -40,9 +43,3 @@ with col2:
     ax.set_title("Cubic Function Derivative Approximation")
     ax.legend()
     st.pyplot(fig)
-
-    # Display the cubic function equation using LaTeX
-    st.subheader("Cubic Function Equation")
-    t = symbols('t')
-    cubic_expr = t**3
-    st.latex(f"x(t) = {latex(cubic_expr)}")
