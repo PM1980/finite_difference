@@ -43,4 +43,5 @@ with col2:
     ax.set_ylabel("Derivada")
     ax.set_title("Aproximação da derivada da função cúbica")
     ax.legend()
+    ax.grid(True)  # Enable gridlines
     st.pyplot(fig)
