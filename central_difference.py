@@ -1,8 +1,7 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-from io import BytesIO
-from PIL import Image
+from sympy import symbols, latex, sympify
 
 def cubic_function(t):
     return t**3
@@ -42,7 +41,8 @@ with col2:
     ax.legend()
     st.pyplot(fig)
 
-    # Add the image field
-    st.subheader("Illustration")
-    image = Image.open("cubic_function.png")
-    st.image(image, caption="Cubic Function Illustration", use_column_width=True)
+    # Display the cubic function equation using LaTeX
+    st.subheader("Cubic Function Equation")
+    t = symbols('t')
+    cubic_expr = t**3
+    st.latex(f"x(t) = {latex(cubic_expr)}")
