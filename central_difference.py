@@ -13,28 +13,29 @@ def central_difference(t, delta):
     x1 = cubic_function(t - delta)
     return (x3 - x1) / (2 * delta)
 
+st.set_page_config(layout="wide")
 st.title("Cubic Function Derivative Approximation")
 
-t = st.slider("Evaluation point (t)", -5.0, 5.0, 2.0)
-delta = st.slider("Delta (spacing between points)", 0.001, 1.0, 0.1)
+col1, col2 = st.columns(2)
 
-exact = exact_derivative(t)
-approximate = central_difference(t, delta)
+with col1:
+    t = st.slider("Evaluation point (t)", -5.0, 5.0, 2.0)
+    delta = st.slider("Delta (spacing between points)", 0.001, 1.0, 0.1)
 
-st.write(f"Exact derivative at t = {t}: {exact:.2f}")
-st.write(f"Approximate derivative at t = {t} (delta = {delta:.2f}): {approximate:.2f}")
+    exact = exact_derivative(t)
+    approximate = central_difference(t, delta)
 
-t_values = np.linspace(-5, 5, 100)
-delta_values = np.logspace(-3, 0, 10)
+    st.markdown(f"<p style='color:green;font-size:32px;'>Exact derivative: {exact:.2f}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:red;font-size:32px;'>Approximate derivative: {approximate:.2f}</p>", unsafe_allow_html=True)
 
-fig, ax = plt.subplots(figsize=(8, 6))
-for delta in delta_values:
-    approximations = [central_difference(t, delta) for t in t_values]
-    ax.plot(t_values, approximations, label=f"delta = {delta:.2f}")
+with col2:
+    t_values = np.linspace(-5, 5, 100)
 
-ax.plot(t_values, [exact_derivative(t) for t in t_values], 'k--', label="Exact derivative")
-ax.set_xlabel("t")
-ax.set_ylabel("Derivative")
-ax.set_title("Cubic Function Derivative Approximation")
-ax.legend()
-st.pyplot(fig)
+    fig, ax = plt.subplots(figsize=(8, 6))
+    ax.plot(t_values, [exact_derivative(t) for t in t_values], 'k--', label="Exact derivative")
+    ax.plot(t_values, [central_difference(t, delta) for t in t_values], 'r-', label=f"Delta = {delta:.2f}")
+    ax.set_xlabel("t")
+    ax.set_ylabel("Derivative")
+    ax.set_title("Cubic Function Derivative Approximation")
+    ax.legend()
+    st.pyplot(fig)
