@@ -30,7 +30,7 @@ with col1:
 
     # Display the cubic function equation
     st.subheader("Equação da função cúbica")
-    st.write(r"$x(t) = t^3$")
+    st.markdown(r"<span style='font-size:24px;'>$x(t) = t^3$</span>", unsafe_allow_html=True)
 
 with col2:
     t_values = np.linspace(-5, 5, 100)
