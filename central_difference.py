@@ -20,7 +20,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     t = st.slider("Evaluation point (t)", -5.0, 5.0, 2.0)
-    delta = st.slider("Delta (spacing between points)", 0.001, 1.0, 0.1)
+    delta = st.slider("Delta (spacing between points)", 0.001, 5.0, 0.1)
 
     exact = exact_derivative(t)
     approximate = central_difference(t, delta)
