@@ -25,8 +25,8 @@ with col1:
     exact = exact_derivative(t)
     approximate = central_difference(t, delta)
 
-    st.markdown(f"<p style='color:green;font-size:32px;'>Exact derivative: {exact:.2f}</p>", unsafe_allow_html=True)
-    st.markdown(f"<p style='color:red;font-size:32px;'>Approximate derivative: {approximate:.2f}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:green;font-size:32px;'>Valor exato da derivada: {exact:.2f}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:red;font-size:32px;'>Valor aproximado da derivada: {approximate:.2f}</p>", unsafe_allow_html=True)
 
     # Display the cubic function equation
     st.subheader("Equação da função cúbica")
